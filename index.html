@@ -2,13 +2,26 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.73/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.73/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
 </head>
 
 <body>
-Hello world
+    <div id="cesiumContainer" style="width: 700px; height:400px"></div>
+    <script>
+        // Cesium.Ion.defaultAccessToken = 'your-token';
+        // var viewer = new Cesium.Viewer('cesiumContainer');
+        // var widget = new Cesium.CesiumWidget("cesiumContainer");
+        var viewer = new Cesium.Viewer('cesiumContainer', {
+            imageryProvider: new Cesium.TileMapServiceImageryProvider({
+                url: Cesium.buildModuleUrl('Assets/Textures/NaturalEarthII')
+            }),
+            baseLayerPicker: false,
+            geocoder: false
+        });
+
+    </script>
 </body>
 
 </html>
