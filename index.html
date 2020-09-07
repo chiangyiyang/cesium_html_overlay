@@ -5,12 +5,17 @@
     <meta charset="utf-8">
     <script src="https://cesium.com/downloads/cesiumjs/releases/1.73/Build/Cesium/Cesium.js"></script>
     <link href="https://cesium.com/downloads/cesiumjs/releases/1.73/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+
+    <script type="text/javascript" src="dygraph-combined.js"></script>
 </head>
 
 <body>
     <div id="cesiumContainer" style="width: 700px; height:400px"></div>
-    <img id="htmlOverlay" style="position: absolute" src="logo.png">
-    
+    <div id="htmlOverlay"  style="position: absolute" >
+        <img src="logo.png">
+        <div id="graphdiv"  style="width: 200px; height:100px"></div>
+    </div>
+
     <script>
         var viewer = new Cesium.Viewer('cesiumContainer', {
             imageryProvider: new Cesium.TileMapServiceImageryProvider({
@@ -38,6 +43,19 @@
                 htmlOverlay.style.left = canvasPosition.x + "px";
             }
         });
+
+        g = new Dygraph(
+
+            // containing div
+            document.getElementById("graphdiv"),
+
+            // CSV or path to a CSV file.
+            "Date,Temperature\n" +
+            "2008-05-07,75\n" +
+            "2008-05-08,70\n" +
+            "2008-05-09,80\n"
+
+        );
 
     </script>
 </body>
